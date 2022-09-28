@@ -1,7 +1,11 @@
 # responsive-dashboard
 
 ## Description
-Web responsive dashboard developed with html, css, bootstrapp and javascript libraries dc, gridstack and dc.leaflet. It renders accordingly to mobile or desktop screens. For checking it out the live dashboard please click <a target='_blank' target='_blank' href='https://adrianrodriguez-io.github.io/responsive-dashboard/'>here</a>.
+Web responsive dashboard developed with html, css, bootstrapp and javascript libraries dc, gridstack and dc.leaflet. It renders accordingly to mobile or desktop screens. 
+
+The dashboard is web responsive wich means it can render on mobile and desktop screens on a web browser. It offers a great experience trought interactive and fast responsive charts. It consists on different interactive charts including an interactive map, in wich you can click in any of the items to filter the dashboard, as well you can select and filter by toggling the menu items in blue.
+
+For checking it out the live dashboard please click <a target='_blank' target='_blank' href='https://adrianrodriguez-io.github.io/responsive-dashboard/'>here</a>.
 
 ## Challengues
 
@@ -18,6 +22,8 @@ Links:
 Dc.js Dimensional chart library <a href='https://dc-js.github.io/dc.js/'>https://dc-js.github.io/dc.js/</a>
 <br>
 Gridstack.js web <a href='https://gridstackjs.com/'>https://gridstackjs.com/</a>
+
+A step further is to place the crossfilter engine on a nodejs app so it is not needed to filter the raw data in the client. 
 
 ## Dashboard developed
 
