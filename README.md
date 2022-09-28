@@ -23,4 +23,4 @@ Gridstack.js web <a href='https://gridstackjs.com/'>https://gridstackjs.com/</a>
 
 Here you can find a screenshoot of the dashboard developed. For checking it out the live dashboard please click <a target='_blank' href=''>here</a>.
 
-<img src=''></img>
+<img src='https://github.com/adrianrodriguez-io/responsive-dashboard/blob/main/images/dashboard%20screenshoot.png'></img>
