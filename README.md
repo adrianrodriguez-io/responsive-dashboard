@@ -1,7 +1,7 @@
 # Responsive Dashboard
 
 ## Description
-Web responsive dashboard developed with html, css, bootstrapp and javascript libraries dc, gridstack and dc.leaflet. It renders accordingly to mobile or desktop screens. 
+Web responsive dashboard developed with html, css, bootstrapp and javascript libraries dc, gridstack and dc.leaflet.
 
 The dashboard is web responsive wich means it can render on mobile and desktop screens on a web browser. It offers a great experience trought interactive and fast responsive charts. It consists on different interactive charts including an interactive map, in wich you can click in any of the items to filter the dashboard, as well you can select and filter by toggling the menu items in blue.
 
