@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" href="images/logo.png">
+    <!--<title>Responsive grid demo</title>-->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.2.6/gridstack.min.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="http://dc-js.github.io/dc.js/css/dc.css"/> -->
+	 
+	<link type="text/css" href="https://dc-js.github.io/dc.leaflet.js/css/leaflet.css" rel="stylesheet"/>
+	<!--<link type="text/css" href="http://dc-js.github.io/dc.leaflet.js/css/MarkerCluster.Default.css" rel="stylesheet"/>-->
+	<!--<link type="text/css" href="http://dc-js.github.io/dc.leaflet.js/css/MarkerCluster.css" rel="stylesheet"/>-->
+	<link type="text/css" href="https://dc-js.github.io/dc.leaflet.js/css/dc.css" rel="stylesheet"/>
+	<link type="text/css" href="https://dc-js.github.io/dc.leaflet.js/css/leaflet-legend.css" rel="stylesheet"/>
+
+<style>
+.leaflet-container .onmouse {
+	background: #fff;
+	background: rgba(255, 255, 255, 0.7);
+	margin: 0;
+	}
+.onmouse,
+.leaflet-control-scale-line {
+	padding: 0 5px;
+	color: #333;
+	}
+.onmouse a {
+	text-decoration: none;
+	}
+.onmouse a:hover {
+	text-decoration: underline;
+	}
+	
+.onmouse {
+	margin-right: 10px;
+	margin-top: 10px;
+	}
+</style>	
+<style type="text/css">
+  .dc-chart th {
+    text-align: left
+  }
+  .dc-chart th,.dc-chart td {
+      padding-left: 10px;
+  }
+  .dc-chart tr.dc-table-group td {
+      padding-top: 4px;
+      border-bottom: 1px solid black;
+  }
+  .dc-chart select {
+      width: 175px;
+	  height: 300px;
+  }
+</style>
+<style type="text/css">
+        .grid-stack {
+            background: white;
+        }
+        .grid-stack-item-content {
+            color: #2c3e50;
+            text-align: center;
+            background-color: white;
+		/*	box-shadow: 2px 2px 2px 0px #888888; */
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+			border-color: #e7e7e7;
+		/*	border: solid 1px; */
+        }
+				
+		.chart-head { 
+			height: 10%;
+			max-height: 20px; 
+			min-height: 20px; 
+			background: #e7e7e7; 
+			display:block;
+		}
+		
+		.chart-main {
+			height:90%;
+			width:100%;
+		}
+		
+		.number-display {
+			height:100%;
+			width:100%;
+			font-size:20px;
+			text-align:middle;
+		}
+		
+</style>
+<style>
+ul.breadcrumb {
+ // padding: 10px 16px;
+  list-style: none;
+ // background-color: #eee;
+   margin-top: -20px;
+}
+
+/* Display list items side by side */
+ul.breadcrumb li {
+  display: inline;
+ // font-size: 18px;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+ul.breadcrumb li+li:before {
+ // padding: 8px;
+  color: black;
+  content: ">"; //"/\00a0";
+}
+
+/* Add a color to all links inside the list */
+ul.breadcrumb li a {
+  color: #0275d8;
+  text-decoration: none;
+}
+
+/* Add a color on mouse-over */
+ul.breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+    <div class="device-xs visible-xs"></div>
+    <div class="device-sm visible-sm"></div>
+    <div class="device-md visible-md"></div>
+    <div class="device-lg visible-lg"></div>
+    <div class="device-xl visible-xl"></div>
+ 
+	  <div class="container-fluid">
+	    <div class='row'>
+			  <div class='col-md-2'>
+			  <ul class="nav flex-column">
+			  
+				
+				  <li class="nav-item">
+				  <a class="" data-toggle="collapse" href="#menu2" role="" aria-expanded="false" aria-controls="menu2">
+					<div class='btn btn-primary' style='width: 100%;'>
+					Continent
+					<i class="icon-filter"></i><!--<span class="caret"></span>-->
+					</div>
+				  </a>
+					<div class="collapse" id="menu2"></div>
+				  </li>
+				  <li class="nav-item">
+				  <a class="" data-toggle="collapse" href="#menu1" role="" aria-expanded="false" aria-controls="menu1">
+				  <div class='btn btn-primary' style='width: 100%;'>
+					Region
+					<i class="icon-filter"></i><!--<span class="caret"></span>-->
+					</div>
+				  </a>
+					<div class="collapse" id="menu1"></div>
+					
+				  </li>
+				 
+			  </ul>
+			  </div>
+				<div class='col-md-10'>
+					<div class="grid-stack">
+					</div>
+				</div>
+		</div>
+    </div>
+
+	
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.0/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.2.6/gridstack.min.js'></script>
+
+<script type="text/javascript" src="https://dc-js.github.io/dc.leaflet.js/js/d3.js"></script>
+<script type="text/javascript" src="https://dc-js.github.io/dc.leaflet.js/js/crossfilter.js"></script>
+<script type="text/javascript" src="https://dc-js.github.io/dc.leaflet.js/js/dc.js"></script>
+
+<script type="text/javascript" src="javascripts/leaflet.js"></script>
+<script type="text/javascript" src="javascripts/colorbrewer.js"></script>
+
+<script type="text/javascript" src="javascripts/dc.leaflet.js"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+            var waitForFinalEvent=function(){var b={};return function(c,d,a){a||(a="I am a banana!");b[a]&&clearTimeout(b[a]);b[a]=setTimeout(c,d)}}();
+            var fullDateString = new Date();
+            function isBreakpoint(alias) {
+                return $('.device-' + alias).is(':visible');
+            }
+            var options = {
+                float: false
+            };
+			
+            $('.grid-stack').gridstack(options);
+			
+			 var grid = $('.grid-stack').data('gridstack');
+			 grid.enableMove(true, true);
+			 grid.enableResize(true, true);
+			 
+            function resizeGrid() {
+               			
+                if (isBreakpoint('xs')) {
+                    $('#grid-size').text('One column mode');
+                } else if (isBreakpoint('sm')) {
+                    grid.setGridWidth(3);
+                    $('#grid-size').text(3);
+                } else if (isBreakpoint('md')) {
+                    grid.setGridWidth(6);
+                    $('#grid-size').text(6);
+                } else if (isBreakpoint('lg')) {
+                    grid.setGridWidth(12);
+                    $('#grid-size').text(12);
+                }
+            };
+			
+			$(screen).resize(function () { // fixed resizing wrong with $(screen) instead of $(window)
+                waitForFinalEvent(function() {
+                    resizeGrid();
+                }, 300, fullDateString.getTime());
+            });
+			
+            new function () {
+                this.serializedData = [
+					{x: 0, y: 0, width: 12, height: 1, item: 6, elem: 'div', chart: 'census' , reset: '', type: '', chartTitle: 'Census'},
+					{x: 0, y: 2, width: 12, height: 3, item: 3, elem: 'div' , chart: 'bar' , reset: '<span class="glyphicon glyphicon-refresh"></span>', type: '', chartTitle: 'Census by Region'},
+                    {x: 0, y: 5, width: 6, height: 4, item: 2, elem: 'div', chart: 'nac' , reset: '<span class="glyphicon glyphicon-refresh"></span>', type: '', chartTitle: 'Census by Continent'},
+					{x: 7, y: 5, width: 6, height: 4, item: 4, elem: 'div', chart: 'map' , reset: '<span class="glyphicon glyphicon-refresh"></span>', type: '', chartTitle: 'Map - Census by Region'}
+                ];
+				
+                this.grid = $('.grid-stack').data('gridstack');
+				
+                this.loadGrid = function () {
+                    this.grid.removeAll();
+                    var items = GridStackUI.Utils.sort(this.serializedData);
+                    _.each(items, function (node, i) {
+                        this.grid.addWidget($('<div><div class="grid-stack-item-content" style="overflow-y: hidden;"><div class="chart-head" >' + node.chartTitle + '<div style="float:right;"><a class="reset" href="javascript:charts[\'' + node.chart + '\'].filterAll();dc.redrawAll();" style="text-align:right;">'+ node.reset +'</a></div></div><' + node.elem + ' class="chart-main" id="' + node.chart + '" ></' + node.elem + '></div></div>'),
+                            node.x, node.y, node.width, node.height);
+				
+				/*		
+				$('.grid-stack').on('resizestart', function(event, ui) {
+				//	var grid = this;
+					var element = event.target;
+					
+				//	console.log(element);
+					
+					resizeChart(node.chart);
+					
+				});
+				*/
+				
+						
+				$('.grid-stack').on('resizestop', function(event, ui) {
+				//	var grid = this;
+				//	var element = event.target;
+					
+				//	console.log(element);
+					
+					resizeChart(node.chart);
+					
+				});
+				
+				/*
+				$('.grid-stack').on('change', function(event, items) {
+						console.log(items);
+					});
+				*/
+				
+                    }, this);
+                    return false;
+                }.bind(this);
+				
+				/*	
+				$('.grid-stack').on('resizestop', function(event, ui) {
+				//	var grid = this;
+					var element = event.target;
+					
+					console.log(element);
+					//resizeChart(element);
+					
+				});
+				*/
+	
+                this.loadGrid();
+                resizeGrid();
+				grid.disable();
+					
+					
+					var target = document.getElementsByClassName('chart-main');
+					
+					
+					for(i=0;i<target.length;i++){	
+						target[i].innerHTML = "<img src='images/preloader.gif'>";
+
+					}	
+					
+					
+					
+				//drawCharts();
+				Promise.all([d3.json('geojson/padronprov.json'), d3.json('data/censusprov.json')])
+					.then(function([geojson, data]) {
+					//console.log(data);
+					
+					for(i=0;i<target.length;i++){	
+						target[i].innerHTML = '';
+					}
+					
+						drawCharts(geojson,data);
+				  });
+				//charts['map'].render() ;	
+            };
+			
+        });
+    </script>
+	
+
+<script type="text/javascript">
+
+var charts = [];
+
+function drawCharts(geojson,data){
+	
+		
+	data.forEach(function (d){
+	
+		  d.poblacion = +d.poblacion;
+	  }); 
+	  	
+	//console.log(data);
+		
+	
+	//});	
+	
+	//console.log(data);
+	
+	  var ndx = crossfilter(data);
+	  
+      var provincia = ndx.dimension(function(d) { return d.provinciacast; });
+      var provinciaGroup = provincia.group().reduceSum(function(d) { return d.poblacion;});
+	  	  
+	  var codprovincia = ndx.dimension(function(d) { return d.codprovincia; });
+      var codprovinciaGroup = codprovincia.group().reduceSum(function(d) { return d.poblacion;});
+		
+      var pais = ndx.dimension(function(d) { return d.continente; });
+      var paisGroup = pais.group().reduceSum(function(d) { return d.poblacion;});
+	
+	
+	var kpisGroup = ndx.groupAll().reduce( //bartypesGroup
+		function (p, d) {
+
+				p.pob = p.pob + d.poblacion;
+            return p;
+        },
+
+        function (p, d) {
+			
+			p.pob = p.pob - d.poblacion;	
+			return p;
+			
+        },
+
+        function () {
+            return {
+					 pob : 0
+					};
+		});
+
+	
+      var provinciaMenu = ndx.dimension(function(d) { return d.provinciacast; });
+      var provinciaMenuGroup = provinciaMenu.group().reduceSum(function(d) { return d.poblacion;});
+	  	  
+      var paisMenu = ndx.dimension(function(d) { return d.continente; });
+      var paisMenuGroup = paisMenu.group().reduceSum(function(d) { return d.poblacion;});
+	
+	//console.log(nacionalidad.group());
+	
+	charts['menu1'] = new dc.SelectMenu('#menu1')
+		.dimension(provinciaMenu)
+		.group(provinciaMenuGroup)
+		.width(100)
+		.multiple(true)
+		//.numberVisible(10)
+		.controlsUseVisibility(true);
+		
+	charts['menu2'] = new dc.SelectMenu('#menu2')
+		.dimension(paisMenu)
+		.group(paisMenuGroup)
+		.width(100)
+		.multiple(true)
+		//.numberVisible(10)
+		.controlsUseVisibility(true);
+
+		
+		charts['census'] = dc.numberDisplay('#census');
+		charts['census']
+		  .formatNumber(d3.format(""))
+		  .valueAccessor(function(d){return d.pob;})
+		  .group(kpisGroup);
+		
+		
+		charts['bar'] =  dc.barChart("#bar")
+		//var bar = dc.barChart("#bar")
+			//.width(768)
+          //.height(380)
+		  .dimension(provincia)
+          .group(provinciaGroup)
+		  .margins({top: 10, right: 10, bottom: 10, left: 60})
+          .x(d3.scaleBand())
+          .xUnits(dc.units.ordinal)
+          //.brushOn(false)
+		  //.yAxisLabel('Nº Agentes')
+		  .elasticY(true)
+          //.xAxisLabel('Fruit')
+          //.yAxisLabel('Quantity Sold')
+          .barPadding(0.1)
+          .outerPadding(0.05)
+		  .ordering(function(d){return -d.poblacion;})
+		  .renderlet(function (chart) {
+   // rotate x-axis labels
+				chart.selectAll('g.x text')
+				.attr('transform', 'translate(-10,-100) rotate(270)');
+				
+				
+				charts['map'].colorDomain([
+						d3.min(codprovinciaGroup.all(), dc.pluck('value')),
+						d3.max(codprovinciaGroup.all(), dc.pluck('value'))
+					]).colorAccessor(function(d,i) {
+						if(d.value != 0){
+						return d.value;
+					}
+				}).redraw();
+				
+		 });
+	
+	
+		
+		charts['nac'] = dc.pieChart("#nac")
+          .dimension(pais) //types
+          .group(paisGroup) //typesGroup
+          //.width(200)
+          //.height(200)
+		  .renderLabel(true)
+		  .valueAccessor(function (d) {
+				//console.log(d);
+				return d.value;
+			})
+		 // .ordering(function(d){ return d.value})
+		.drawPaths(true);
+		//.on('renderlet', function(chart) {
+		//	charts['map'].redraw();
+		//});
+        //.legend(dc.legend());
+			
+		
+				
+			
+		charts['map'] = dc_leaflet.choroplethChart("#map")	
+		//var map = dc_leaflet.choroplethChart("#map")
+          .dimension(codprovincia) //facilities
+          .group(codprovinciaGroup) //facilitiesGroup
+          //.width(500)
+          //.height(500)
+          .center([40.4165000,-3.7025600]) //[40.4165000,-3.7025600])
+          .zoom(5)
+          .geojson(geojson)
+          .colors(colorbrewer.Reds[8])
+          .colorDomain([
+              d3.min(codprovinciaGroup.all(), dc.pluck('value')),
+              d3.max(codprovinciaGroup.all(), dc.pluck('value'))
+          ])
+          .colorAccessor(function(d,i) {
+			  	//console.log(d);
+			
+               if(d.value != 0){
+				return d.value;
+			  }
+          })
+          .featureKeyAccessor(function(feature) {
+			  return feature.properties.code;
+          })
+		  
+		  //.valueAccessor(function (d) {
+				//console.log(d);
+				//return d.value.distinct;
+			//	return d.value;
+			//})
+           
+		  /*
+		  .title(function (d) {
+                            return "State: ";
+                        })
+		  */
+		  /*
+		  .renderPopup(true)
+          .popup(function(d,feature) {
+		  
+				//console.log(feature);
+              return feature.properties.name+" : "+d.value;
+          })
+		  */
+		  .legend(dc_leaflet.legend().position('bottomright'));
+		  
+		dc.renderAll();
+
+	//	})
+}
+
+	  function parseDate(d) {
+    return new Date(
+		d.substring(0,4),
+		d.substring(6,4)-1//,
+  //      d.substring(8,6)
+        );
+  }
+
+
+
+function resizeChart(elem) {
+
+//	console.log(elem);
+
+	var w = document.getElementById(elem).offsetWidth-20;
+	var	h = document.getElementById(elem).offsetHeight-20;
+		
+//	console.log(w + ',' + h);
+	
+	charts[elem].width(w).height(h);
+	
+	charts[elem].render();
+
+}
+
+
+
+</script>
+
+</body>
+</html>
