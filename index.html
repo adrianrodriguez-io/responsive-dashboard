@@ -97,37 +97,17 @@
 		
 </style>
 <style>
-ul.breadcrumb {
- // padding: 10px 16px;
-  list-style: none;
- // background-color: #eee;
-   margin-top: -20px;
-}
-
-/* Display list items side by side */
-ul.breadcrumb li {
-  display: inline;
- // font-size: 18px;
-}
-
-/* Add a slash symbol (/) before/behind each list item */
-ul.breadcrumb li+li:before {
- // padding: 8px;
-  color: black;
-  content: ">"; //"/\00a0";
-}
-
-/* Add a color to all links inside the list */
-ul.breadcrumb li a {
-  color: #0275d8;
-  text-decoration: none;
-}
-
-/* Add a color on mouse-over */
-ul.breadcrumb li a:hover {
-  color: #01447e;
-  text-decoration: underline;
-}
+.panel-body {
+	border-style: solid;
+    border-top: none;
+	border-right: none;
+	border-bottom: none;
+	border-color: grey;
+	}
+	
+.navbar {
+    text-align: center;
+}	
 </style>
 </head>
 <body>
@@ -137,8 +117,28 @@ ul.breadcrumb li a:hover {
     <div class="device-lg visible-lg"></div>
     <div class="device-xl visible-xl"></div>
  
+	<div class="container-fluid">
+		<h1>Responsive Dashboard</h1>
+		<div class="panel-heading"></div>
+		<div class="panel-body" >
+			<!--<div class="bs-callout bs-callout-warning" id="callout-btn-group-justified-dbl-border">-->
+			<h4>Technologies used:</h4>
+				<ul> 
+					<li>HTML</li> 
+					<li>CSS</li> 
+					<li>Javascript</li> 
+				</ul>
+			<h4>Repository: </h4> <a href='https://github.com/adrianrodriguez-io/responsive-dashboard'>https://github.com/adrianrodriguez-io/responsive-dashboard</a>
+			<h4>About the dashboard:</h4>
+			<p>The dashboard is web responsive wich means it can render on mobile and desktop screens. It offers a great experience trought interactive and fast responsive charts. It consists on different interactive charts including an interactive map, in wich you can click in any of the items to filter the dashboard, as well you can select and filter by toggling the menu items in blue.</p> 	
+		</div>
+	</div>
+ 
 	  <div class="container-fluid">
 	    <div class='row'>
+		<nav class="navbar navbar-default" style='background: white;align: middle; font-size:25 px;'>
+			<h3>Responsive Dashboard</h3>
+		</nav>
 			  <div class='col-md-2'>
 			  <ul class="nav flex-column">
 			  
