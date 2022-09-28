@@ -14,7 +14,7 @@ While developing this project for getting a web responsive dashboard I started b
 I found dc and crossfilter javascript libraries wich in combination allow to create data visualization of connected charts that offers a great experience trought interactive and responsive charts.
 
 ### Second challengue
-The second challengue was to find a way of doing the set of charts responsive, this is, I wanted the charts to render and change the size according to mobile or desktop screens. After investigating 
+The second challengue was to find a way of doing the set of charts web responsive, this is, I wanted the charts to render and change the size according to mobile or desktop screens. After investigating 
 I found gridstack javascript library wich allow to create different widgets that adjust the size and layout depending on the screen device. 
 
 ### Third challengue
