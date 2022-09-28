@@ -1,7 +1,7 @@
 # responsive-dashboard
 
 ## Description
-Web responsive dashboard developed with html, css, bootstrapp and javascript libraries dc, gridstack and dc.leaflet. It renders accordingly to mobile or desktop screens. For checking it out the live dashboard please click <a target='_blank' href=''>here</a>.
+Web responsive dashboard developed with html, css, bootstrapp and javascript libraries dc, gridstack and dc.leaflet. It renders accordingly to mobile or desktop screens. For checking it out the live dashboard please click <a target='_blank' target='_blank' href='https://adrianrodriguez-io.github.io/responsive-dashboard/'>here</a>.
 
 ## Challengues
 
@@ -21,6 +21,6 @@ Gridstack.js web <a href='https://gridstackjs.com/'>https://gridstackjs.com/</a>
 
 ## Dashboard developed
 
-Here you can find a screenshoot of the dashboard developed. For checking it out the live dashboard please click <a target='_blank' href=''>here</a>.
+Here you can find a screenshoot of the dashboard developed. For checking it out the live dashboard please click <a target='_blank' href='https://adrianrodriguez-io.github.io/responsive-dashboard/'>here</a>.
 
 <img src='https://github.com/adrianrodriguez-io/responsive-dashboard/blob/main/images/dashboard%20screenshoot.png'></img>
