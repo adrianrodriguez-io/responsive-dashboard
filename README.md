@@ -5,7 +5,7 @@ Web responsive dashboard developed with html, css, bootstrapp and javascript lib
 
 The dashboard is web responsive wich means it can render on mobile and desktop screens on a web browser. It offers a great experience trought interactive and fast responsive charts. It consists on different interactive charts including an interactive map, in wich you can click in any of the items to filter the dashboard, as well you can select and filter by toggling the menu items in blue.
 
-For checking it out the live dashboard please click <a target='_blank' target="_blank" href='https://adrianrodriguez-io.github.io/responsive-dashboard/'>here</a>.
+For checking it out the LIVE DASHBOARD please click <a target='_blank' target="_blank" href='https://adrianrodriguez-io.github.io/responsive-dashboard/'>HERE</a>.
 
 ## Challengues
 
